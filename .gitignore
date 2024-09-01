@@ -1,6 +1,9 @@
 # Local .terraform directories
 **/.terraform/*
 
+managed_context/
+test_suite_analysis/
+
 # .tfstate files
 *.tfstate
 *.tfstate.*

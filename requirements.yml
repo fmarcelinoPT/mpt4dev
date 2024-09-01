@@ -4,3 +4,11 @@ roles:
     src: https://github.com/fmarcelinoPT/ansible-role-nerd-fonts.git
     version: develop
     scm: git
+  - name: terraform
+    src: https://github.com/fmarcelinoPT/ansible-role-terraform.git
+    version: develop
+    scm: git
+  - name: docker
+    src: https://github.com/fmarcelinoPT/ansible-role-docker.git
+    version: develop
+    scm: git
