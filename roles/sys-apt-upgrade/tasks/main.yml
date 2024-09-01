@@ -1,0 +1,9 @@
+---
+# tasks file for sys-apt-upgrade
+- name: apt upgrade
+  become: true
+  apt:
+    update_cache: yes
+    autoclean: true
+    autoremove: true
+    upgrade: "yes"

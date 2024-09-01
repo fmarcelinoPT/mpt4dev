@@ -1,0 +1,8 @@
+---
+# tasks file for omzh
+- name: Install latest omzh
+  become: true
+  apt:
+    name: zsh
+    state: present
+    update_cache: true

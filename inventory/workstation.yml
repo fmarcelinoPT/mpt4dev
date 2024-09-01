@@ -1,0 +1,16 @@
+all:
+  vars:
+    global_roles:
+#      - hello
+#      - sys-apt-upgrade
+      - apt-net-tools
+      - omzh
+  children:
+    ungrouped:
+      #      vars:
+      #        DOMAIN: onemarc.io
+      hosts:
+        localhost:
+          ansible_connection: local
+          ansible_roles:
+            - yakuake

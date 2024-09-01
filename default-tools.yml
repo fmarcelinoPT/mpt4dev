@@ -1,0 +1,15 @@
+---
+- name: Apply roles based on inventory
+  hosts: all
+#  vars:
+#    support_directory: "/opt/deploy/support-apps"
+  tasks:
+    - name: Include global roles
+      include_role:
+        name: "{{ item }}"
+      loop: "{{ global_roles }}"
+
+    - name: Include host-specific roles
+      include_role:
+        name: "{{ item }}"
+      loop: "{{ hostvars[inventory_hostname].ansible_roles | default([]) }}"
