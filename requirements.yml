@@ -1,0 +1,6 @@
+---
+roles:
+  - name: nerd-fonts
+    src: https://github.com/fmarcelinoPT/ansible-role-nerd-fonts.git
+    version: develop
+    scm: git

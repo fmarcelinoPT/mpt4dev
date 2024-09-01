@@ -5,6 +5,7 @@ all:
 #      - sys-apt-upgrade
       - apt-packages
       - omzh
+      - nerd-fonts
   children:
     ungrouped:
       #      vars:

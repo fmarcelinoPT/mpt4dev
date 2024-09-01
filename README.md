@@ -12,7 +12,6 @@ So this project will use Ansible scripts (with Roles) to do so.
 - [ ] Docker
 - [ ] Microsoft Edge
 - [ ] Spotify
-- [ ] Fonts (Nerd Fonts - FiraCode)
 - [ ] Synology Drive Client
 
 ## List of apps/tools to be installed
@@ -21,6 +20,7 @@ So this project will use Ansible scripts (with Roles) to do so.
 - Custom Roles
   - [x] Oh My Zsh (and plugins)
   - [x] [Meld](https://meldmerge.org/)
+  - [x] nerd-fonts | <https://github.com/fmarcelinoPT/ansible-role-nerd-fonts>
 - `apt` Package Manager
   - [x] net-tools
   - [x] nano
@@ -65,5 +65,6 @@ sudo apt install ansible
 ## Usage
 
 ```bash
+ansible-galaxy install -r requirements.yml --force && \
 ansible-playbook -i inventory/workstation.yml default-tools.yml -kK
 ```
