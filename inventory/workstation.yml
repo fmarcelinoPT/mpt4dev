@@ -18,4 +18,5 @@ all:
 #            - snapd-packages
             - snapd-packages-desktop
             - meld
-
+            - terraform
+            - docker
