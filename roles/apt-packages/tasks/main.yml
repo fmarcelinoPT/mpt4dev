@@ -6,6 +6,7 @@
     pkg:
       - net-tools
       - nano
+      - parted
       - cockpit
     state: present
     update_cache: false

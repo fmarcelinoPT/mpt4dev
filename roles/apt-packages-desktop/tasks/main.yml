@@ -1,6 +1,7 @@
 ---
 # tasks file for apt-packages-desktop
 - name: Install `apt` packages 4 Desktop
+  become: true
   ansible.builtin.apt:
     pkg:
       - snapd
@@ -9,5 +10,7 @@
       - filezilla
       - krita
       - remmina
+      - network-manager-fortisslvpn
+      - network-manager-openvpn
     state: present
     update_cache: false

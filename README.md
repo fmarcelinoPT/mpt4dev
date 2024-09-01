@@ -6,21 +6,25 @@ Everytime I change machine, for instance to test a new Linux distribution, I hav
 
 So this project will use Ansible scripts (with Roles) to do so.
 
-## List of apps/tools to be installed
+## TODO
 
-- [x] Ansible
-- [x] Oh My Zsh (and plugins)
-- [x] [Meld](https://meldmerge.org/)
 - [ ] Terraform
 - [ ] Docker
 - [ ] Microsoft Edge
 - [ ] Spotify
 - [ ] Fonts (Nerd Fonts - FiraCode)
 - [ ] Synology Drive Client
-- [ ] Forticlient SSLvpn
+
+## List of apps/tools to be installed
+
+- [x] Ansible
+- Custom Roles
+  - [x] Oh My Zsh (and plugins)
+  - [x] [Meld](https://meldmerge.org/)
 - `apt` Package Manager
   - [x] net-tools
   - [x] nano
+  - [x] parted
   - [x] [Cockpit](https://cockpit-project.org/) | <https://localhost:9090>
 - `apt` Package Manager - Desktop
   - [x] snapd
@@ -29,6 +33,8 @@ So this project will use Ansible scripts (with Roles) to do so.
   - [x] FileZilla (filezilla)
   - [x] Krita (krita)
   - [x] Remmina (remmina)
+  - [x] NetworkManager - Fortinet SSLVPN Client (network-manager-fortisslvpn)
+  - [x] NetworkManager - OpenVPN Client (network-manager-openvpn)
 - `snapd` Package Manager
   - [ ]
 - `snapd` Package Manager - Desktop
