@@ -1,8 +1,0 @@
----
-# tasks file for yakuake
-- name: Install yakuake
-  become: true
-  apt:
-    name: yakuake
-    state: present
-    update_cache: true

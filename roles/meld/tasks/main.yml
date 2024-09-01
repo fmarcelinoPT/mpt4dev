@@ -1,0 +1,38 @@
+---
+- name: Install latest `desktop-file-utils`
+  become: true
+  apt:
+    name: desktop-file-utils
+    state: present
+    update_cache: false
+
+- name: Install latest `meld`
+  become: true
+  apt:
+    name: meld
+    state: present
+    update_cache: false
+
+# copy .desktop to "/usr/share/kio/servicemenus" and run update-desktop-database
+- name: Check if file `meld service menu` exists
+  stat:
+    path: "{{ shortcut_folder }}/{{ shortcut_name }}"
+  register: meld_service_menu
+
+- name: Delete existing file `meld service menu`
+  become: true
+  shell:
+    cmd: |
+      rm {{ shortcut_name }}
+    chdir: "{{ shortcut_folder }}"
+  when: meld_service_menu.stat.exists
+
+- name: Install meld servicemenu
+  become: true
+  shell:
+    cmd: |
+      curl -o {{ shortcut_name }} https://www.opencode.net/ashark/compare-using-meld_dolphin-service-menu/-/raw/master/compare-using-meld.desktop?ref_type=heads
+      update-desktop-database
+    chdir: "{{ shortcut_folder }}"
+  when: not meld_service_menu.stat.exists
+

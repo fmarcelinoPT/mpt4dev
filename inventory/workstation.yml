@@ -3,7 +3,7 @@ all:
     global_roles:
 #      - hello
 #      - sys-apt-upgrade
-      - apt-net-tools
+      - apt-packages
       - omzh
   children:
     ungrouped:
@@ -13,4 +13,8 @@ all:
         localhost:
           ansible_connection: local
           ansible_roles:
-            - yakuake
+            - apt-packages-desktop
+#            - snapd-packages
+            - snapd-packages-desktop
+            - meld
+

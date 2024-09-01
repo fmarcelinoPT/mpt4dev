@@ -1,0 +1,4 @@
+---
+# vars file for meld
+shortcut_folder: "/usr/share/kio/servicemenus"
+shortcut_name: "compare-using-meld.desktop"
