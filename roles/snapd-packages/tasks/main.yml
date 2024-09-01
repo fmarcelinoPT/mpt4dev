@@ -1,0 +1,10 @@
+---
+# tasks file for snapd-packages
+- name: Install `snapd-packages`
+  community.general.snap:
+    name:
+#      - bar
+#    options:
+#      - com=A
+#      - foo:fooPar=X
+#      - bar:barPar=Y

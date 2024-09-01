@@ -8,32 +8,38 @@ So this project will use Ansible scripts (with Roles) to do so.
 
 ## List of apps/tools to be installed
 
-- Ansible
-- [Cockpit](https://cockpit-project.org/)
-- Terraform
-- [Meld](https://meldmerge.org/)
-- Docker
-- VSCode
-- Draw.io
-- Obsidian
-- Microsoft Edge
-- Krita
-- Spotify
-- KeePassXC
-- Remmina
-- Oh My Zsh (and plugins)
-- Yakuake
-- Fonts (Nerd Fonts - FiraCode)
-- Synology Drive Client
-- Forticlient SSLvpn
-- FileZilla
-- Package Manager
-  - nano
+- [x] Ansible
+- [x] Oh My Zsh (and plugins)
+- [x] [Meld](https://meldmerge.org/)
+- [ ] Terraform
+- [ ] Docker
+- [ ] Microsoft Edge
+- [ ] Spotify
+- [ ] Fonts (Nerd Fonts - FiraCode)
+- [ ] Synology Drive Client
+- [ ] Forticlient SSLvpn
+- `apt` Package Manager
+  - [x] net-tools
+  - [x] nano
+  - [x] [Cockpit](https://cockpit-project.org/) | <https://localhost:9090>
+- `apt` Package Manager - Desktop
+  - [x] snapd
+  - [x] yakuake
+  - [x] KeePasXC (keepassxc)
+  - [x] FileZilla (filezilla)
+  - [x] Krita (krita)
+  - [x] Remmina (remmina)
+- `snapd` Package Manager
+  - [ ]
+- `snapd` Package Manager - Desktop
+  - [x] obsidian
+  - [x] code
+  - [x] drawio
 
 ## List of apps/tools TO BE REMOVED
 
 - Package Manager
-  - vim
+  - [ ] vim
 
 ## Installing Ansible
 
@@ -53,5 +59,5 @@ sudo apt install ansible
 ## Usage
 
 ```bash
-ansible-playbook -i inventory/workstation.yml default-tools.yml
+ansible-playbook -i inventory/workstation.yml default-tools.yml -kK
 ```

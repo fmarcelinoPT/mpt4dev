@@ -1,0 +1,13 @@
+---
+# tasks file for apt-packages-desktop
+- name: Install `apt` packages 4 Desktop
+  ansible.builtin.apt:
+    pkg:
+      - snapd
+      - yakuake
+      - keepassxc
+      - filezilla
+      - krita
+      - remmina
+    state: present
+    update_cache: false

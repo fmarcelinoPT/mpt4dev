@@ -1,7 +1,0 @@
----
-- name: Install latest net-tools
-  become: true
-  apt:
-    name: net-tools
-    state: present
-    update_cache: false

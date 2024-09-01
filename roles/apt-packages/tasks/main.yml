@@ -1,0 +1,11 @@
+---
+# tasks file for apt-packages
+- name: Install `apt` packages
+  become: true
+  ansible.builtin.apt:
+    pkg:
+      - net-tools
+      - nano
+      - cockpit
+    state: present
+    update_cache: false
