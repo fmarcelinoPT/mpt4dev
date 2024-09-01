@@ -76,6 +76,12 @@ An optional section for the role authors to include contact information, or a we
    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
    ```
 
+1. Install plugin `OhMyZsh-full-autoupdate`
+
+   ```bash
+   git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
+   ```
+
 1. Edit `.zshrc` and replace with [this content](files/.zshrc)
 
    ```bash
@@ -88,4 +94,4 @@ An optional section for the role authors to include contact information, or a we
    sudo nano ~/.p10k.zsh
    ```
 
-1. Reboot machine
+1. Restart your terminal
