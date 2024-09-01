@@ -1,10 +1,10 @@
 all:
   vars:
     global_roles:
-#      - hello
+      - hello
 #      - sys-apt-upgrade
-      - apt-net-tools
-      - omzh
+#      - apt-net-tools
+#      - omzh
   children:
     ungrouped:
       #      vars:
@@ -13,4 +13,5 @@ all:
         localhost:
           ansible_connection: local
           ansible_roles:
-            - yakuake
+#            - yakuake
+            - meld

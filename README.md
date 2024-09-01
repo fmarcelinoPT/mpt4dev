@@ -11,6 +11,7 @@ So this project will use Ansible scripts (with Roles) to do so.
 - Ansible
 - [Cockpit](https://cockpit-project.org/)
 - Terraform
+- [Meld](https://meldmerge.org/)
 - Docker
 - VSCode
 - Draw.io

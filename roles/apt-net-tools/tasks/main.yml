@@ -4,4 +4,4 @@
   apt:
     name: net-tools
     state: present
-    update_cache: true
+    update_cache: false
