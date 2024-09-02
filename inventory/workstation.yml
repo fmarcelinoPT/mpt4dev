@@ -1,20 +1,22 @@
 all:
   vars:
     global_roles:
-#      - hello
-#      - sys-apt-upgrade
+      # - hello
+      # - sys-apt-upgrade
       - apt-packages
       - omzh
+      - nerd-fonts
   children:
     ungrouped:
-      #      vars:
-      #        DOMAIN: onemarc.io
+      # vars:
+      #   DOMAIN: onemarc.io
       hosts:
         localhost:
           ansible_connection: local
           ansible_roles:
+            # - snapd-packages
             - apt-packages-desktop
-#            - snapd-packages
             - snapd-packages-desktop
             - meld
-
+            - terraform
+            - docker

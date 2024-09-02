@@ -8,11 +8,8 @@ So this project will use Ansible scripts (with Roles) to do so.
 
 ## TODO
 
-- [ ] Terraform
-- [ ] Docker
 - [ ] Microsoft Edge
 - [ ] Spotify
-- [ ] Fonts (Nerd Fonts - FiraCode)
 - [ ] Synology Drive Client
 
 ## List of apps/tools to be installed
@@ -21,11 +18,15 @@ So this project will use Ansible scripts (with Roles) to do so.
 - Custom Roles
   - [x] Oh My Zsh (and plugins)
   - [x] [Meld](https://meldmerge.org/)
+  - [x] nerd-fonts | <https://github.com/fmarcelinoPT/ansible-role-nerd-fonts>
+  - [x] Terraform
+  - [x] Docker
 - `apt` Package Manager
   - [x] net-tools
   - [x] nano
   - [x] parted
   - [x] [Cockpit](https://cockpit-project.org/) | <https://localhost:9090>
+  - [x] unzip
 - `apt` Package Manager - Desktop
   - [x] snapd
   - [x] yakuake
@@ -65,5 +66,6 @@ sudo apt install ansible
 ## Usage
 
 ```bash
+ansible-galaxy install -r requirements.yml --force && \
 ansible-playbook -i inventory/workstation.yml default-tools.yml -kK
 ```
