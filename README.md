@@ -16,7 +16,24 @@ So this project will use Ansible scripts (with Roles) to do so.
 
 - [x] Ansible
 - Custom Roles
-  - [x] Oh My Zsh (and plugins)
+  - [x] Oh My Zsh
+    - Plugins
+      - [x] ohmyzsh-full-autoupdate
+      - [x] zsh-autosuggestions
+      - [x] zsh-syntax-highlighting
+      - [x] zsh-bat
+      - [x] you-should-use
+      - [x] docker
+      - [x] kubectl
+      - [x] microk8s
+      - [x] minikube
+      - [x] git
+      - [x] sudo
+      - [x] ansible
+      - [x] terraform
+      - [x] npm
+      - [x] pip
+      - [x] z
   - [x] [Meld](https://meldmerge.org/)
   - [x] nerd-fonts | <https://github.com/fmarcelinoPT/ansible-role-nerd-fonts>
   - [x] Terraform
