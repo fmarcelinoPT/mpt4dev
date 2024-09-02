@@ -8,5 +8,6 @@
       - nano
       - parted
       - cockpit
+      - unzip
     state: present
     update_cache: false
