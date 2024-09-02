@@ -19,13 +19,13 @@
     path: "{{ shortcut_folder }}/{{ shortcut_name }}"
   register: meld_service_menu
 
-- name: Delete existing file `meld service menu`
-  become: true
-  shell:
-    cmd: |
-      rm {{ shortcut_name }}
-    chdir: "{{ shortcut_folder }}"
-  when: meld_service_menu.stat.exists
+# - name: Delete existing file `meld service menu`
+#   become: true
+#   shell:
+#     cmd: |
+#       rm {{ shortcut_name }}
+#     chdir: "{{ shortcut_folder }}"
+#   when: meld_service_menu.stat.exists
 
 - name: Install meld servicemenu
   become: true
