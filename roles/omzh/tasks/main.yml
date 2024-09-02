@@ -26,9 +26,9 @@
     path: "~/.oh-my-zsh"
   register: omzh_folder
 
-- name: Uninstall `OhMyzsh`
-  ansible.builtin.script: files/uninstall.sh
-  when: omzh_folder.stat.exists
+# - name: Uninstall `OhMyzsh`
+#   ansible.builtin.script: files/uninstall.sh
+#   when: omzh_folder.stat.exists
 
 - name: Install latest `OhMyzsh`
   shell:
@@ -41,15 +41,18 @@
       git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
       git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
     chdir: "~"
+  when: not omzh_folder.stat.exists
 
 - name: Install/Update `.zshrc`
   copy:
     src: files/.zshrc
     dest: $HOME/.zshrc
     backup: true
+  when: not omzh_folder.stat.exists
 
 - name: Install/Update `.p10k.zsh`
   copy:
     src: files/.p10k.zsh
     dest: $HOME/.p10k.zsh
     backup: true
+  when: not omzh_folder.stat.exists
