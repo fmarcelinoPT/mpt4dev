@@ -15,8 +15,8 @@ all:
           ansible_connection: local
           ansible_roles:
             # - snapd-packages
-            # - apt-packages-desktop
-            # - snapd-packages-desktop
-            # - meld
+            - apt-packages-desktop
+            - snapd-packages-desktop
+            - meld
             - terraform
-            # - docker
+            - docker
