@@ -1,13 +1,23 @@
 ---
 # tasks file for snapd-packages-desktop
 - name: Install `snapd-packages` 4 Desktop
+  become: true
+  community.general.snap:
+    name:
+      - drawio
+    # options:
+      # - com=A
+      # - foo:fooPar=X
+      # - bar:barPar=Y
+
+- name: Install `snapd-packages` 4 Desktop (classic)
+  become: true
   community.general.snap:
     name:
       - obsidian
       - code
-      - drawio
-#      - bar
-#    options:
-#      - com=A
-#      - foo:fooPar=X
-#      - bar:barPar=Y
+    classic: true
+    # options:
+      # - com=A
+      # - foo:fooPar=X
+      # - bar:barPar=Y

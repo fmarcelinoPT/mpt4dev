@@ -2,7 +2,7 @@ all:
   vars:
     global_roles:
       # - hello
-      # - sys-apt-upgrade
+      - sys-apt-upgrade
       - apt-packages
       - omzh
       - nerd-fonts
