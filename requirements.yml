@@ -2,7 +2,7 @@
 roles:
   - name: nerd-fonts
     src: https://github.com/fmarcelinoPT/ansible-role-nerd-fonts.git
-    version: master
+    version: main
     scm: git
   - name: terraform
     src: https://github.com/fmarcelinoPT/ansible-role-terraform.git
