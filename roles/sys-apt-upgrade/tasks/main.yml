@@ -2,7 +2,7 @@
 # tasks file for sys-apt-upgrade
 - name: apt upgrade
   become: true
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     autoclean: true
     autoremove: true

@@ -2,21 +2,21 @@
 # tasks file for omzh
 - name: Install latest `bat`
   become: true
-  apt:
+  ansible.builtin.apt:
     name: bat
     state: present
     update_cache: false
 
 - name: Install latest `neofetch`
   become: true
-  apt:
+  ansible.builtin.apt:
     name: neofetch
     state: present
     update_cache: false
 
 - name: Install latest `zsh`
   become: true
-  apt:
+  ansible.builtin.apt:
     name: zsh
     state: present
     update_cache: false
@@ -26,33 +26,61 @@
     path: "~/.oh-my-zsh"
   register: omzh_folder
 
-# - name: Uninstall `OhMyzsh`
-#   ansible.builtin.script: files/uninstall.sh
-#   when: omzh_folder.stat.exists
+- name: Uninstall `OhMyzsh`
+  ansible.builtin.script: files/uninstall.sh
+  when: omzh_folder.stat.exists
 
-- name: Install latest `OhMyzsh`
-  shell:
-    cmd: |
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-      git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-      git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat
-      git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
-      git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
-    chdir: "~"
-  when: not omzh_folder.stat.exists
+- name: Install Oh My Zsh
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: ~/.oh-my-zsh
+    depth: 1
+
+- name: Install `zsh-autosuggestions` plugin
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    depth: 1
+- name: Install `zsh-syntax-highlighting` plugin
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    depth: 1
+- name: Install `zsh-bat` plugin
+  ansible.builtin.git:
+    repo: https://github.com/fdellwing/zsh-bat.git
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-bat
+    depth: 1
+- name: Install `you-should-use` plugin
+  ansible.builtin.git:
+    repo: https://github.com/MichaelAquilina/zsh-you-should-use.git
+    dest: ~/.oh-my-zsh/custom/plugins/you-should-use
+    depth: 1
+- name: Install `ohmyzsh-full-autoupdate` plugin
+  ansible.builtin.git:
+    repo: https://github.com/Pilaton/OhMyZsh-full-autoupdate.git
+    dest: ~/.oh-my-zsh/custom/plugins/ohmyzsh-full-autoupdate
+    depth: 1
+- name: Install `powerlevel10k` theme
+  ansible.builtin.git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+    depth: 1
 
 - name: Install/Update `.zshrc`
   copy:
     src: files/.zshrc
-    dest: $HOME/.zshrc
-    backup: true
-  when: not omzh_folder.stat.exists
+    dest: ~/.zshrc
+    backup: false
 
 - name: Install/Update `.p10k.zsh`
   copy:
     src: files/.p10k.zsh
-    dest: $HOME/.p10k.zsh
-    backup: true
-  when: not omzh_folder.stat.exists
+    dest: ~/.p10k.zsh
+    backup: false
+
+- name: Change user shell to zsh
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /bin/zsh
