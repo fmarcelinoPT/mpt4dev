@@ -158,4 +158,4 @@ _dotnet_zsh_complete()
 compdef _dotnet_zsh_complete dotnet
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)

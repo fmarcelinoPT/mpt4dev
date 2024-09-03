@@ -1,7 +1,7 @@
 all:
   vars:
     # A list of users who will be added to the docker group.
-    docker_users: [ fmarcelino ]
+    docker_users: [fmarcelino]
     # Roles to be applied to all hosts
     global_roles:
       # - hello
@@ -14,6 +14,9 @@ all:
       # vars:
       #   DOMAIN: onemarc.io
       hosts:
+        192.168.8.111:
+          ansible_ssh_user: ubuntu
+          ansible_ssh_private_key_file: ~/.ssh/id_rsa_proxmox_template
         localhost:
           ansible_connection: local
           ansible_roles:
