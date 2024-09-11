@@ -35,9 +35,11 @@ So this project will use Ansible scripts (with Roles) to do so.
       - [x] pip
       - [x] z
   - [x] [Meld](https://meldmerge.org/)
-  - [x] nerd-fonts | <https://github.com/fmarcelinoPT/ansible-role-nerd-fonts>
-  - [x] Terraform
-  - [x] Docker
+  - [x] [nerd-fonts](https://github.com/fmarcelinoPT/ansible-role-nerd-fonts)
+  - [x] [Terraform](https://github.com/fmarcelinoPT/ansible-role-terraform)
+  - [x] [JetBrains Rider](https://github.com/fmarcelinoPT/ansible-role-jetbrains-rider)
+  - [x] [JetBrains Toolbox](https://github.com/fmarcelinoPT/ansible-role-jetbrains-toolbox)
+  - [x] [Docker](https://github.com/fmarcelinoPT/ansible-role-docker)
 - `apt` Package Manager
   - [x] net-tools
   - [x] nano
