@@ -4,25 +4,27 @@ all:
     docker_users: [fmarcelino]
     # Roles to be applied to all hosts
     global_roles:
-      # - hello
+      - hello
       - sys-apt-upgrade
       - apt-packages
       - omzh
       - nerd-fonts
   children:
     ungrouped:
-      # vars:
-      #   DOMAIN: onemarc.io
+      vars:
+        #   DOMAIN: onemarc.io
+        rider_action: "install"
       hosts:
-        192.168.8.111:
-          ansible_ssh_user: ubuntu
-          ansible_ssh_private_key_file: ~/.ssh/id_rsa_proxmox_template
+        #192.168.8.111:
+        #  ansible_ssh_user: ubuntu
+        #  ansible_ssh_private_key_file: ~/.ssh/id_rsa_proxmox_template
         localhost:
           ansible_connection: local
           ansible_roles:
-            # - snapd-packages
+            - snapd-packages
             - apt-packages-desktop
             - snapd-packages-desktop
             - meld
             - terraform
             - docker
+            - jetbrains-rider
