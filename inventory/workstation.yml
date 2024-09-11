@@ -2,13 +2,15 @@ all:
   vars:
     # A list of users who will be added to the docker group.
     docker_users: [fmarcelino]
+    # Action for Oh My Zsh
+    ohmyzsh_action: "install"
     # Roles to be applied to all hosts
     global_roles:
       - hello
-      - sys-apt-upgrade
-      - apt-packages
-      - omzh
-      - nerd-fonts
+      #- sys-apt-upgrade
+      #- apt-packages
+      - ohmyzsh
+      #- nerd-fonts
   children:
     ungrouped:
       vars:
@@ -22,9 +24,9 @@ all:
           ansible_connection: local
           ansible_roles:
             #- snapd-packages
-            - apt-packages-desktop
-            - snapd-packages-desktop
-            - meld
-            - terraform
-            - docker
+            #- apt-packages-desktop
+            #- snapd-packages-desktop
+            #- meld
+            #- terraform
+            #- docker
             - jetbrains-rider

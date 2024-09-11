@@ -1,0 +1,4 @@
+---
+# tasks file for ohmyzsh
+- name: Install or Uninstall Oh My zsh based on user action
+  ansible.builtin.include_tasks: "{{ ohmyzsh_action }}.yml"
