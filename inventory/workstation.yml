@@ -13,7 +13,7 @@ all:
     ungrouped:
       vars:
         #   DOMAIN: onemarc.io
-        rider_action: "install"
+        rider_action: "uninstall"
       hosts:
         #192.168.8.111:
         #  ansible_ssh_user: ubuntu
@@ -21,7 +21,7 @@ all:
         localhost:
           ansible_connection: local
           ansible_roles:
-            - snapd-packages
+            #- snapd-packages
             - apt-packages-desktop
             - snapd-packages-desktop
             - meld
