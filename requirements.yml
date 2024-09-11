@@ -14,5 +14,9 @@ roles:
     scm: git
   - name: jetbrains-rider
     src: https://github.com/fmarcelinoPT/ansible-role-jetbrains-rider.git
-    version: develop
+    version: main
+    scm: git
+  - name: jetbrains-toolbox
+    src: https://github.com/fmarcelinoPT/ansible-role-jetbrains-toolbox.git
+    version: main
     scm: git
