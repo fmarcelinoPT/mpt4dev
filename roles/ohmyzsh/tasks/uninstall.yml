@@ -1,0 +1,10 @@
+---
+# tasks file for ohmyzsh - Uninstall
+- name: Check if `OhMyzsh` installed
+  stat:
+    path: "~/.oh-my-zsh"
+  register: ohmyzsh_folder
+
+- name: Uninstall `OhMyzsh`
+  ansible.builtin.script: files/uninstall.sh
+  when: ohmyzsh_folder.stat.exists
