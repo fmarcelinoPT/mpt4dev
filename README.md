@@ -93,12 +93,20 @@ ansible-playbook -i inventory/workstation.yml default-tools.yml -kK
 
 ```bash
 qm unlock 470
-qm unlock 8010
+qm unlock 1000
 qm stop 470
-qm stop 8010
+qm stop 1000
 qm destroy 470 -destroy-unreferenced-disks 1 -purge 1
-qm destroy 8010 -destroy-unreferenced-disks 1 -purge 1
+qm destroy 1000 -destroy-unreferenced-disks 1 -purge 1
 rm -rf noble-server-cloudimg-amd64.img*
 sh build-cloudinit-image.sh
 sh create-vm-using-image.sh
 ```
+
+## License
+
+BSD
+
+## Author Information
+
+This role was created at 2024 by [fmarcelinoPT](https://github.com/fmarcelinoPT). Feel free to customize or extend the role to fit your needs.
