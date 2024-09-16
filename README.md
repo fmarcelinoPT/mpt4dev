@@ -89,20 +89,6 @@ ansible-galaxy install -r requirements.yml --force && \
 ansible-playbook -i inventory/workstation.yml default-tools.yml -kK
 ```
 
-### Testing helper scripts
-
-```bash
-qm unlock 470
-qm unlock 1000
-qm stop 470
-qm stop 1000
-qm destroy 470 -destroy-unreferenced-disks 1 -purge 1
-qm destroy 1000 -destroy-unreferenced-disks 1 -purge 1
-rm -rf noble-server-cloudimg-amd64.img*
-sh build-cloudinit-image.sh
-sh create-vm-using-image.sh
-```
-
 ## License
 
 BSD
