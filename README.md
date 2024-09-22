@@ -85,20 +85,24 @@ sudo apt install ansible
 ## Usage
 
 ```bash
-ansible-galaxy install -r requirements.yml --force && \
-ansible-playbook -i inventory/workstation.yml default-tools.yml -kK
+ansible-galaxy install -r inventory/hypervisors_requirements.yml --force && \
+ansible-playbook -i inventory/hypervisors.yml default-tools.yml
 ```
-
-### Testing helper scripts
 
 ```bash
-qm unlock 470
-qm unlock 8010
-qm stop 470
-qm stop 8010
-qm destroy 470 -destroy-unreferenced-disks 1 -purge 1
-qm destroy 8010 -destroy-unreferenced-disks 1 -purge 1
-rm -rf noble-server-cloudimg-amd64.img*
-sh build-cloudinit-image.sh
-sh create-vm-using-image.sh
+ansible-galaxy install -r inventory/servers_requirements.yml --force && \
+ansible-playbook -i inventory/servers.yml default-tools.yml
 ```
+
+```bash
+ansible-galaxy install -r inventory/workstation_requirements.yml --force && \
+ansible-playbook -i inventory/workstation.yml default-tools.yml
+```
+
+## License
+
+BSD
+
+## Author Information
+
+This role was created at 2024 by [fmarcelinoPT](https://github.com/fmarcelinoPT). Feel free to customize or extend the role to fit your needs.

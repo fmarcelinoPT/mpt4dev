@@ -1,0 +1,29 @@
+all:
+  vars:
+    # A list of users who will be added to the docker group.
+    docker_users: [donutuse]
+    # Action for Oh My Zsh
+    ohmyzsh_action: "install"
+    # Roles to be applied to all hosts
+    global_roles:
+      # - hello
+      - sys-apt-upgrade
+      - apt-packages
+      - ohmyzsh
+      - nerd-fonts
+  children:
+    ungrouped:
+      hosts:
+        # Hypervisors
+        kronos.onemarc.io:
+          ansible_ssh_user: ansiblebot
+          ansible_ssh_private_key_file: ~/.ssh/support_rsa
+        zeus.onemarc.io:
+          ansible_ssh_user: ansiblebot
+          ansible_ssh_private_key_file: ~/.ssh/support_rsa
+        hera.onemarc.io:
+          ansible_ssh_user: ansiblebot
+          ansible_ssh_private_key_file: ~/.ssh/support_rsa
+        poseidon.onemarc.io:
+          ansible_ssh_user: ansiblebot
+          ansible_ssh_private_key_file: ~/.ssh/support_rsa
