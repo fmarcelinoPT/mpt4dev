@@ -101,7 +101,7 @@ ansible-playbook -i inventory/workstation.yml default-tools.yml
 
 ## License
 
-BSD
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Author Information
 
