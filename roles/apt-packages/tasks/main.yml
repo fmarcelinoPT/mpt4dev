@@ -9,5 +9,6 @@
       - parted
       - cockpit
       - unzip
+      - git
     state: present
     update_cache: false
