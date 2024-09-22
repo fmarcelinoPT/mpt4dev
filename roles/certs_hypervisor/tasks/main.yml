@@ -1,0 +1,92 @@
+---
+# tasks file for certs_hypervisors
+- name: Touch files to be created
+  when: install_certificates
+  become: true
+  become_user: root
+  file:
+    path: "{{ touch_file }}"
+    state: touch
+    owner: root
+    group: www-data
+    mode: "0640"
+    force: true
+  loop_control:
+    loop_var: touch_file
+  with_items:
+    - /etc/pve/nodes/hera/pveproxy-ssl.pem
+    - /etc/pve/nodes/hera/pveproxy-ssl.key
+    - /etc/pve/nodes/kronos/pveproxy-ssl.pem
+    - /etc/pve/nodes/kronos/pveproxy-ssl.key
+    - /etc/pve/nodes/poseidon/pveproxy-ssl.pem
+    - /etc/pve/nodes/poseidon/pveproxy-ssl.key
+    - /etc/pve/nodes/zeus/pveproxy-ssl.pem
+    - /etc/pve/nodes/zeus/pveproxy-ssl.key
+
+- name: Install 'hera' certificates
+  when: install_certificates
+  become: true
+  become_user: root
+  block:
+    - name: Install 'hera' certificates - crt
+      ansible.builtin.copy:
+        src: files/hera.onemarc.io.crt
+        dest: /etc/pve/nodes/hera/pveproxy-ssl.pem
+        backup: true
+    - name: Install 'hera' certificates - key
+      ansible.builtin.copy:
+        src: files/hera.onemarc.io-private.key
+        dest: /etc/pve/nodes/hera/pveproxy-ssl.key
+        backup: true
+
+- name: Install 'kronos' certificates
+  when: install_certificates
+  become: true
+  become_user: root
+  block:
+    - name: Install 'kronos' certificates - crt
+      ansible.builtin.copy:
+        src: files/kronos.onemarc.io.crt
+        dest: /etc/pve/nodes/kronos/pveproxy-ssl.pem
+        backup: true
+    - name: Install 'kronos' certificates - key
+      become: true
+      ansible.builtin.copy:
+        src: files/kronos.onemarc.io-private.key
+        dest: /etc/pve/nodes/kronos/pveproxy-ssl.key
+        backup: true
+
+- name: Install 'poseidon' certificates
+  when: install_certificates
+  become: true
+  become_user: root
+  block:
+    - name: Install 'poseidon' certificates - crt
+      ansible.builtin.copy:
+        src: files/poseidon.onemarc.io.crt
+        dest: /etc/pve/nodes/poseidon/pveproxy-ssl.pem
+        backup: true
+    - name: Install 'poseidon' certificates - key
+      become: true
+      ansible.builtin.copy:
+        src: files/poseidon.onemarc.io-private.key
+        dest: /etc/pve/nodes/poseidon/pveproxy-ssl.key
+        backup: true
+
+- name: Install 'zeus' certificates
+  when: install_certificates
+  become: true
+  become_user: root
+  block:
+    - name: Install 'zeus' certificates - crt
+      ansible.builtin.copy:
+        src: files/zeus.onemarc.io.crt
+        dest: /etc/pve/nodes/zeus/pveproxy-ssl.pem
+        backup: true
+    - name: Install 'zeus' certificates - key
+      become: true
+      ansible.builtin.copy:
+        src: files/zeus.onemarc.io-private.key
+        dest: /etc/pve/nodes/zeus/pveproxy-ssl.key
+        backup: true
+

@@ -1,0 +1,8 @@
+---
+# tasks file for pve_restart_pveproxy
+- name: Restart PVE proxy to update certificates
+  when: install_certificates
+  become: true
+  service:
+    name: pveproxy
+    state: restarted
