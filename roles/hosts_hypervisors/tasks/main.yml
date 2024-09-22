@@ -1,0 +1,18 @@
+---
+# tasks file for hosts_hypervisors
+- name: Check if rivendell.onemarc.io is already defined
+  lineinfile:
+    state: absent
+    path: "/etc/hosts"
+    regexp: "^rivendell"
+  check_mode: true
+  changed_when: false # This just makes things look prettier in the logs
+  register: check
+
+- name: Define rivendell.onemarc.io if undefined
+  when: check.found == 0
+  become: true
+  lineinfile:
+    state: present
+    path: "/etc/hosts"
+    line: "192.168.8.3 rivendell rivendell.onemarc.io"

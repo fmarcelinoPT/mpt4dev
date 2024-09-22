@@ -85,13 +85,18 @@ sudo apt install ansible
 ## Usage
 
 ```bash
-ansible-galaxy install -r inventory/workstation_requirements.yml --force && \
-ansible-playbook -i inventory/workstation.yml default-tools.yml -kK
+ansible-galaxy install -r inventory/hypervisors_requirements.yml --force && \
+ansible-playbook -i inventory/hypervisors.yml default-tools.yml
 ```
 
 ```bash
 ansible-galaxy install -r inventory/servers_requirements.yml --force && \
-ansible-playbook -i inventory/servers.yml default-tools.yml -kK
+ansible-playbook -i inventory/servers.yml default-tools.yml
+```
+
+```bash
+ansible-galaxy install -r inventory/workstation_requirements.yml --force && \
+ansible-playbook -i inventory/workstation.yml default-tools.yml
 ```
 
 ## License
