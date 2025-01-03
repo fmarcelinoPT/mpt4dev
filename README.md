@@ -2,7 +2,7 @@
 
 My Precious Tools 4 Dev is all the tools that I need in every machine I use.
 
-Everytime I change machine, for instance to test a new Linux distribution, I have to install several tools all over again.
+Every time I change machine, for instance to test a new Linux distribution, I have to install several tools all over again.
 
 So this project will use Ansible scripts (with Roles) to do so.
 
@@ -10,6 +10,7 @@ So this project will use Ansible scripts (with Roles) to do so.
 
 - [ ] Microsoft Edge
 - [ ] Spotify
+- [ ] Spotube
 - [ ] Synology Drive Client
 
 ## List of apps/tools to be installed
