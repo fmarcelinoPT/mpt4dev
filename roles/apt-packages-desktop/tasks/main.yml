@@ -1,5 +1,5 @@
 ---
-# tasks file for apt-packages-desktop
+# tasks file for sys-package-manager-packages-desktop
 - name: Install `apt` packages 4 Desktop
   become: true
   ansible.builtin.apt:

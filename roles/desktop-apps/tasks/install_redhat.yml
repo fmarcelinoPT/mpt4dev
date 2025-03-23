@@ -1,0 +1,109 @@
+- name: Install dependencies
+  ansible.builtin.dnf:
+    name:
+      - wget
+      - gpg
+    state: present
+  become: true
+
+- name: Install BetterBird on Red Hat
+  block:
+    - name: Ensure Flatpak is installed
+      become: true
+      package:
+        name: flatpak
+        state: present
+
+    - name: Ensure Flathub repository is added
+      become: true
+      ansible.builtin.command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      args:
+        creates: /var/lib/flatpak/repo/flathub
+
+    - name: Install Betterbird via Flatpak
+      become: true
+      ansible.builtin.command: flatpak install -y flathub eu.betterbird.Betterbird
+      args:
+        creates: /var/lib/flatpak/app/eu.betterbird.Betterbird
+
+- name: Install VSCode on Red Hat
+  block:
+    - name: Import Microsoft GPG key
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://packages.microsoft.com/keys/microsoft.asc
+      become: true
+
+    - name: Add VSCode repository
+      ansible.builtin.yum_repository:
+        name: vscode
+        description: "Visual Studio Code"
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      become: true
+
+    - name: Install VSCode
+      ansible.builtin.dnf:
+        name: code
+        state: present
+      become: true
+
+- name: Install Microsoft Edge on Red Hat
+  block:
+    - name: Import Microsoft GPG key
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://packages.microsoft.com/keys/microsoft.asc
+      become: true
+
+    - name: Add Microsoft Edge repository
+      ansible.builtin.yum_repository:
+        name: microsoft-edge
+        description: "Microsoft Edge"
+        baseurl: https://packages.microsoft.com/yumrepos/edge
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      become: true
+
+    - name: Install Microsoft Edge
+      ansible.builtin.dnf:
+        name: microsoft-edge
+        state: present
+      become: true
+
+- name: Install Obsidian
+  block:
+    - name: Install Obsidian (classic)
+      become: true
+      community.general.snap:
+        name:
+          - obsidian
+        state: present
+        classic: true
+
+- name: Install Draw.io
+  block:
+    - name: Install Draw.io (snap)
+      become: true
+      community.general.snap:
+        name:
+          - drawio
+        state: present
+
+- name: Install Spotify
+  block:
+    - name: Install Spotify (snap)
+      become: true
+      community.general.snap:
+        name:
+          - spotify
+        state: present
+
+- name: Update target desktop shortcuts
+  block:
+    - name: Copy .desktop files to /usr/share/applications/
+      become: true
+      ansible.builtin.shell: cp /var/lib/snapd/desktop/applications/*.desktop /usr/share/applications/

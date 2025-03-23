@@ -1,25 +1,25 @@
 ---
 # tasks file for ohmyzsh
-- name: Install latest `bat`
+- name: Install `apt` packages (Debian/Ubuntu)
   become: true
   ansible.builtin.apt:
-    name: bat
+    pkg:
+      - bat
+      - neofetch
+      - zsh
     state: present
     update_cache: false
+  when: ansible_facts['pkg_mgr'] == 'apt'
 
-- name: Install latest `neofetch`
+- name: Install `dnf` packages (RHEL/CentOS/Fedora)
   become: true
-  ansible.builtin.apt:
-    name: neofetch
+  ansible.builtin.dnf:
+    name:
+      - bat
+      - neofetch
+      - zsh
     state: present
-    update_cache: false
-
-- name: Install latest `zsh`
-  become: true
-  ansible.builtin.apt:
-    name: zsh
-    state: present
-    update_cache: false
+  when: ansible_facts['pkg_mgr'] == 'dnf'
 
 - name: Check if `OhMyzsh` installed
   stat:

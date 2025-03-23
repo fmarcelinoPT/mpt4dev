@@ -2,7 +2,7 @@
 
 My Precious Tools 4 Dev is all the tools that I need in every machine I use.
 
-Everytime I change machine, for instance to test a new Linux distribution, I have to install several tools all over again.
+Every time I change machine, for instance to test a new Linux distribution, I have to install several tools all over again.
 
 So this project will use Ansible scripts (with Roles) to do so.
 
@@ -10,6 +10,7 @@ So this project will use Ansible scripts (with Roles) to do so.
 
 - [ ] Microsoft Edge
 - [ ] Spotify
+- [ ] Spotube
 - [ ] Synology Drive Client
 
 ## List of apps/tools to be installed
@@ -69,6 +70,8 @@ So this project will use Ansible scripts (with Roles) to do so.
 
 ## Installing Ansible
 
+### Ubuntu
+
 in: <https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu>
 
 Ubuntu builds are available [in a PPA here](https://launchpad.net/~ansible/+archive/ubuntu/ansible).
@@ -80,7 +83,27 @@ sudo apt update
 sudo apt install software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
+sudo apt install python-argcomplete
+ansible-galaxy collection install community.general
 ```
+
+### RedHat
+
+in: <https://docs.ansible.com/ansible/2.9/installation_guide/intro_installation.html#installing-ansible-on-rhel-centos-or-fedora>
+
+```bash
+sudo dnf install ansible
+sudo dnf install python-argcomplete
+ansible-galaxy collection install community.general
+```
+
+## Update fingerprints
+
+```bash
+ssh -i ~/.ssh/onemarc_rsa donutuse@poseidon.onemarc.io
+ssh -i ~/.ssh/onemarc_rsa donutuse@zeus.onemarc.io
+ssh -i ~/.ssh/onemarc_rsa donutuse@hera.onemarc.io
+ssh -i ~/.ssh/onemarc_rsa donutuse@kronos.onemarc.io
 
 ## Usage
 
@@ -105,4 +128,4 @@ ansible-playbook -i inventory/workstation.yml default-tools.yml
 
 ## Author Information
 
-This role was created at 2024 by [fmarcelinoPT](https://github.com/fmarcelinoPT). Feel free to customize or extend the role to fit your needs.
+This scripts was created at 2024 by [fmarcelinoPT](https://github.com/fmarcelinoPT). Feel free to customize or extend it to fit your needs.

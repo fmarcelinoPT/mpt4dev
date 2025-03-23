@@ -1,0 +1,19 @@
+---
+# tasks file for sys-package-manager-upgrade
+- name: Update apt cache and upgrade packages (Debian/Ubuntu)
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes
+    upgrade: "yes"
+  when: ansible_facts['pkg_mgr'] == 'apt'
+
+- name: Update dnf cache and upgrade packages (RHEL/CentOS/Fedora)
+  become: true
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+    update_cache: yes
+  when: ansible_facts['pkg_mgr'] == 'dnf'
+

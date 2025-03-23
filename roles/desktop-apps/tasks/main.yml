@@ -1,0 +1,7 @@
+- name: Install applications on Ubuntu
+  ansible.builtin.include_tasks: install_ubuntu.yml
+  when: ansible_os_family == "Debian"
+
+- name: Install applications on Red Hat
+  ansible.builtin.include_tasks: install_redhat.yml
+  when: ansible_os_family == "RedHat"
