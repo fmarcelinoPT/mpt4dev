@@ -70,6 +70,8 @@ So this project will use Ansible scripts (with Roles) to do so.
 
 ## Installing Ansible
 
+### Ubuntu
+
 in: <https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu>
 
 Ubuntu builds are available [in a PPA here](https://launchpad.net/~ansible/+archive/ubuntu/ansible).
@@ -81,7 +83,27 @@ sudo apt update
 sudo apt install software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
+sudo apt install python-argcomplete
+ansible-galaxy collection install community.general
 ```
+
+### RedHat
+
+in: <https://docs.ansible.com/ansible/2.9/installation_guide/intro_installation.html#installing-ansible-on-rhel-centos-or-fedora>
+
+```bash
+sudo dnf install ansible
+sudo dnf install python-argcomplete
+ansible-galaxy collection install community.general
+```
+
+## Update fingerprints
+
+```bash
+ssh -i ~/.ssh/onemarc_rsa donutuse@poseidon.onemarc.io
+ssh -i ~/.ssh/onemarc_rsa donutuse@zeus.onemarc.io
+ssh -i ~/.ssh/onemarc_rsa donutuse@hera.onemarc.io
+ssh -i ~/.ssh/onemarc_rsa donutuse@kronos.onemarc.io
 
 ## Usage
 

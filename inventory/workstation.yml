@@ -7,15 +7,15 @@ all:
     # Roles to be applied to all hosts
     global_roles:
       # - hello
-      - sys-apt-upgrade
-      - apt-packages
+      - sys-package-manager-upgrade
+      - sys-package-manager-packages
       - ohmyzsh
       - nerd-fonts
   children:
     ungrouped:
       vars:
         #   DOMAIN: onemarc.io
-        rider_action: "install"
+        rider_action: "uninstall"
       hosts:
         #192.168.8.111:
         #  ansible_ssh_user: ubuntu
@@ -25,10 +25,9 @@ all:
           ansible_ssh_user: fmarcelino
           ansible_ssh_private_key_file: ~/.ssh/support_rsa
           ansible_roles:
-            # - snapd-packages
-            - apt-packages-desktop
-            - snapd-packages-desktop
-            - meld
+            # - meld
             - terraform
-            - docker
+            # - docker
+            - jetbrains-toolbox
             - jetbrains-rider
+            - desktop-apps
