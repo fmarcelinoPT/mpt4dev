@@ -1,0 +1,7 @@
+- name: Include RedHat installation
+  ansible.builtin.include_tasks: "install_cert_redhat.yml"
+  when: ansible_os_family == "RedHat"
+
+- name: Include Ubuntu installation
+  ansible.builtin.include_tasks: "install_cert_ubuntu.yml"
+  when: ansible_os_family == "Debian"

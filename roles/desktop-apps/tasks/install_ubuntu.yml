@@ -7,6 +7,55 @@
     update_cache: yes
   become: true
 
+# Synology Drive
+
+- name: Install Synology Drive
+  block:
+
+    - name: Enable COPR repository for Synology Drive
+      ansible.builtin.command:
+        cmd: dnf copr enable emixampp/synology-drive -y
+      args:
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:emixampp:synology-drive.repo
+      become: true
+
+    - name: Install Synology Drive (GNOME)
+      ansible.builtin.dnf:
+        name: synology-drive
+        state: present
+        update_cache: yes
+      become: true
+
+# NVidia drivers
+
+- name: Install NVidia drivers
+  block:
+
+    - name: Download NVIDIA keyring package
+      ansible.builtin.get_url:
+        url: "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb"
+        dest: "/tmp/cuda-keyring_1.1-1_all.deb"
+        mode: '0644'
+      become: true
+
+    - name: Install NVIDIA keyring package
+      ansible.builtin.apt:
+        deb: "/tmp/cuda-keyring_1.1-1_all.deb"
+      become: true
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+      become: true
+
+    - name: Install NVIDIA driver
+      ansible.builtin.apt:
+        name: "nvidia-open-570"
+        state: present
+      become: true
+
+# Microsoft applications installation
+
 - name: Install VSCode
   block:
     - name: Add Microsoft GPG key
@@ -45,9 +94,11 @@
 
     - name: Install Microsoft Edge
       ansible.builtin.apt:
-        name: microsoft-edge
+        name: microsoft-edge-beta
         update_cache: yes
       become: true
+
+# Installation of snap applications
 
 - name: Install Obsidian
   block:
@@ -75,6 +126,15 @@
       community.general.snap:
         name:
           - spotify
+        state: present
+
+- name: Install krita
+  block:
+    - name: Install krita (snap)
+      become: true
+      community.general.snap:
+        name:
+          - krita
         state: present
 
 - name: Update target desktop shortcuts

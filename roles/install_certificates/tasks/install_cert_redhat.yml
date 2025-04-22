@@ -1,0 +1,20 @@
+- name: Ensure certificate directory exists on RedHat
+  ansible.builtin.file:
+    path: "{{ cert_dir_redhat }}"
+    state: directory
+    mode: '0755'
+  become: true
+
+- name: Copy certificates to RedHat trusted store
+  ansible.builtin.copy:
+    src: "files/{{ cert_file }}"
+    dest: "{{ cert_dir_redhat }}/{{ cert_file }}"
+    mode: '0644'
+  loop: "{{ certificates }}"
+  loop_control:
+    loop_var: cert_file
+  become: true
+
+- name: Update CA trust on RedHat
+  ansible.builtin.command: update-ca-trust
+  become: true

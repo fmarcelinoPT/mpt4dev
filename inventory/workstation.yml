@@ -7,10 +7,11 @@ all:
     # Roles to be applied to all hosts
     global_roles:
       # - hello
-      - sys-package-manager-upgrade
-      - sys-package-manager-packages
-      - ohmyzsh
-      - nerd-fonts
+      # - sys-package-manager-upgrade
+      # - sys-package-manager-packages
+      # - ohmyzsh
+      # - nerd-fonts
+      - install_certificates
   children:
     ungrouped:
       vars:
@@ -24,10 +25,10 @@ all:
           ansible_connection: local
           ansible_ssh_user: fmarcelino
           ansible_ssh_private_key_file: ~/.ssh/support_rsa
-          ansible_roles:
-            # - meld
-            - terraform
-            # - docker
-            - jetbrains-toolbox
-            - jetbrains-rider
-            - desktop-apps
+          # ansible_roles:
+          #   # - meld
+          #   - terraform
+          #   # - docker
+          #   - jetbrains-toolbox
+          #   - jetbrains-rider
+          #   - desktop-apps

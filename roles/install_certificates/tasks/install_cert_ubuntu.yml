@@ -1,0 +1,20 @@
+- name: Ensure certificate directory exists on Ubuntu
+  ansible.builtin.file:
+    path: "{{ cert_dir_ubuntu }}"
+    state: directory
+    mode: '0755'
+  become: true
+
+- name: Copy certificates to Ubuntu trusted store
+  ansible.builtin.copy:
+    src: "files/{{ cert_file }}"
+    dest: "{{ cert_dir_ubuntu }}/{{ cert_file }}"
+    mode: '0644'
+  loop: "{{ certificates }}"
+  loop_control:
+    loop_var: cert_file
+  become: true
+
+- name: Update CA trust on Ubuntu
+  ansible.builtin.command: update-ca-certificates
+  become: true

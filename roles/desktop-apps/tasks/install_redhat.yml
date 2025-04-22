@@ -26,6 +26,42 @@
       args:
         creates: /var/lib/flatpak/app/eu.betterbird.Betterbird
 
+# Synology Drive
+
+- name: Install Synology Drive
+  block:
+    - name: Enable COPR repository for Synology Drive
+      ansible.builtin.command:
+        cmd: dnf copr enable emixampp/synology-drive -y
+      args:
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:emixampp:synology-drive.repo
+      become: true
+
+    - name: Install Synology Drive (GNOME)
+      ansible.builtin.dnf:
+        name: synology-drive
+        state: present
+        update_cache: yes
+      become: true
+
+# NVidia drivers
+
+- name: Install NVidia drivers
+  block:
+    - name: Add NVIDIA repository
+      ansible.builtin.command:
+        cmd: dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel9/x86_64/cuda-rhel9.repo
+      args:
+        creates: /etc/yum.repos.d/cuda-rhel9.repo
+      become: true
+
+    - name: Install NVIDIA Driver
+      ansible.builtin.command:
+        cmd: sudo dnf -y module install nvidia-driver:570-open
+      become: true
+
+# Microsoft applications installation
+
 - name: Install VSCode on Red Hat
   block:
     - name: Import Microsoft GPG key
@@ -70,9 +106,11 @@
 
     - name: Install Microsoft Edge
       ansible.builtin.dnf:
-        name: microsoft-edge
+        name: microsoft-edge-beta
         state: present
       become: true
+
+# Installation of snap applications
 
 - name: Install Obsidian
   block:
@@ -100,6 +138,15 @@
       community.general.snap:
         name:
           - spotify
+        state: present
+
+- name: Install krita
+  block:
+    - name: Install krita (snap)
+      become: true
+      community.general.snap:
+        name:
+          - krita
         state: present
 
 - name: Update target desktop shortcuts

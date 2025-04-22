@@ -12,6 +12,7 @@ So this project will use Ansible scripts (with Roles) to do so.
 - [ ] Spotify
 - [ ] Spotube
 - [ ] Synology Drive Client
+- [ ] https://extensions.gnome.org/extension/4481/forge/
 
 ## List of apps/tools to be installed
 
