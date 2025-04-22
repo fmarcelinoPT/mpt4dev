@@ -1,0 +1,22 @@
+---
+# Install dotnet using package manager
+- name: Install `apt` packages (Debian/Ubuntu)
+  become: true
+  ansible.builtin.apt:
+    pkg:
+      - dotnet-sdk-6.0
+      - dotnet-sdk-8.0
+      - dotnet-sdk-9.0
+    state: present
+    update_cache: false
+  when: ansible_facts['pkg_mgr'] == 'apt'
+
+- name: Install `dnf` packages (RHEL/CentOS/Fedora)
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - dotnet-sdk-6.0
+      - dotnet-sdk-8.0
+      - dotnet-sdk-9.0
+    state: present
+  when: ansible_facts['pkg_mgr'] == 'dnf'
