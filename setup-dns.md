@@ -2,19 +2,20 @@ nmcli connection edit "DiS DataCenter"
 set ipv4.dns-search informantem.gen informantem.prt informantem.develop bravantic.qa bravantic.dm bravantic.prd
 set ipv4.dns-priority 100
 set ipv4.never-default yes
+set ipv4.ignore-auto-dns yes
 save
 quit
 
-nmcli connection modify "DiS DataCenter" ipv4.ignore-auto-dns yes
+nmcli connection modify "DiS DataCenter"
 
 nmcli connection edit "RockIs\!Dead"
+set ipv4.dns 192.168.8.10
 set ipv4.dns-search onemarc.io
 set ipv4.dns-priority -1
 set ipv4.never-default yes
+set ipv4.dns-routing true
 save
 quit
-
-nmcli connection modify "RockIs\!Dead" ipv4.dns-routing true
 
 -----------------
 
