@@ -1,0 +1,39 @@
+---
+# Ensure support tools is installed
+- name: Install `apt` packages (Debian/Ubuntu)
+  become: true
+  ansible.builtin.apt:
+    pkg:
+      - git
+    state: present
+    update_cache: false
+  when: ansible_facts['pkg_mgr'] == 'apt'
+
+- name: Install `dnf` packages (RHEL/CentOS/Fedora)
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - git
+    state: present
+  when: ansible_facts['pkg_mgr'] == 'dnf'
+
+# Install git-credential-manager
+# Resources: https://github.com/git-ecosystem/git-credential-manager
+
+- name: Install and configure 'git-credential-manager'
+  ansible.builtin.shell: |
+    dotnet tool install -g git-credential-manager
+    git-credential-manager configure
+    git config --global credential.credentialStore secretservice
+
+- name: Setup git username and email
+  ansible.builtin.shell: |
+    git config --global user.name "Filipe Marcelino"
+    git config --global user.email fmarcelino@gmail.com
+    git config --global init.defaultBranch main
+
+# Setup certificates
+# git config --global http.https://gitlab.informantem.gen.sslCAInfo "/repos/certs_dis/environment_GEN/certs/ECM [GEN] GitLab Bundle.crt"
+# git config --global --bool http.https://gitlab.informantem.gen.sslverify true
+# git config --global http.https://externalgl.informantem.gen.sslCAInfo "/repos/certs_dis/environment_GEN/certs/ECM [GEN] External GitLab Bundle.crt"
+# git config --global --bool http.https://externalgl.informantem.gen.sslverify true

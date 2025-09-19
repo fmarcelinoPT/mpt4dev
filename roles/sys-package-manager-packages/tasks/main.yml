@@ -12,21 +12,53 @@
       - cockpit
       - unzip
       - git
+      - yakuake
+      - keepassxc
+      - filezilla
+      - krita
+      - remmina
+      - network-manager-fortisslvpn
+      - network-manager-openvpn
     state: present
     update_cache: false
   when: ansible_facts['pkg_mgr'] == 'apt'
 
 - name: Install `dnf` packages (RHEL/CentOS/Fedora)
-  become: true
-  ansible.builtin.dnf:
-    name:
-      - snapd
-      - net-tools
-      - nano
-      - parted
-      - cockpit
-      - unzip
-      - git
-    state: present
-  when: ansible_facts['pkg_mgr'] == 'dnf'
+  block:
+    - name: Install `dnf` packages
+      become: true
+      ansible.builtin.dnf:
+        name:
+          - snapd
+          - net-tools
+          - nano
+          - parted
+          - cockpit
+          - unzip
+          - git
+          - yakuake
+          - keepassxc
+          - filezilla
+          - remmina
+          - NetworkManager-fortisslvpn
+          - NetworkManager-fortisslvpn-gnome
+          - NetworkManager-openvpn
+          - NetworkManager-openvpn-gnome
+          - ntfs-3g
+          - gnome-tweaks
+          - ansible-lint
+        state: present
 
+    - name: Check if /snap symlink exists
+      stat:
+        path: /snap
+      register: snap_symlink
+
+    - name: Setup snapd service
+      become: true
+      ansible.builtin.shell: |
+        systemctl enable --now snapd.socket
+        ln -s /var/lib/snapd/snap /snap
+      when: not snap_symlink.stat.exists
+
+  when: ansible_facts['pkg_mgr'] == 'dnf'

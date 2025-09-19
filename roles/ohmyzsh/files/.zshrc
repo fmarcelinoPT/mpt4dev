@@ -159,3 +159,8 @@ compdef _dotnet_zsh_complete dotnet
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
+
+# Home Lab [onemarc.io] alias
+alias hlup="sudo wg-quick up wg0"
+alias hldown="sudo wg-quick down wg0"
+alias hlshow="sudo wg show"

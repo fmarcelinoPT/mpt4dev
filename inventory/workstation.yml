@@ -6,16 +6,17 @@ all:
     ohmyzsh_action: "install"
     # Roles to be applied to all hosts
     global_roles:
-      # - hello
-      - sys-package-manager-upgrade
-      - sys-package-manager-packages
-      - ohmyzsh
-      - nerd-fonts
+      - hello
+      # - sys-package-manager-upgrade
+      # - sys-package-manager-packages
+      # - ohmyzsh
+      # - nerd-fonts
+      # - install_certificates
   children:
     ungrouped:
       vars:
         #   DOMAIN: onemarc.io
-        rider_action: "uninstall"
+        rider_action: "install"
       hosts:
         #192.168.8.111:
         #  ansible_ssh_user: ubuntu
@@ -26,8 +27,9 @@ all:
           ansible_ssh_private_key_file: ~/.ssh/support_rsa
           ansible_roles:
             # - meld
-            - terraform
+            # - terraform
             # - docker
-            - jetbrains-toolbox
-            - jetbrains-rider
-            - desktop-apps
+            # - jetbrains-toolbox
+            # - jetbrains-rider
+            # - desktop-apps
+            - dev-setup-git-environment

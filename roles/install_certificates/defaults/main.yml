@@ -1,0 +1,18 @@
+certificates:
+  - "onemarc-ca-cert.crt"
+  - "onemarc-wildcard.crt"
+  - "bravantic-gen-ca-cert.crt"
+  - "bravantic-gen-wildcard.crt"
+  - "bravantic-prt-ca-cert.crt"
+  - "bravantic-prt-wildcard.crt"
+  - "bravantic-develop-ca-cert.crt"
+  - "bravantic-develop-wildcard.crt"
+  - "bravantic-qa-ca-cert.crt"
+  - "bravantic-qa-wildcard.crt"
+  - "bravantic-dm-ca-cert.crt"
+  - "bravantic-dm-wildcard.crt"
+  - "bravantic-gen-bundle-gitlab.crt"
+  - "bravantic-gen-bundle-gitlab-external.crt"
+
+cert_dir_redhat: "/etc/pki/ca-trust/source/anchors"
+cert_dir_ubuntu: "/usr/local/share/ca-certificates"
